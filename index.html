@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOODER</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <!-- Facebook -->
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <!-- Twitter -->
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:card" content="">
+    <meta name="twitter:site" content="">
+    <link rel="canonical" href="https://cfdcircle.vn" />
+    <!-- Favicon -->
+    <link rel="icon" href="./img/favi.ico">
+
+    <link rel="stylesheet" href="./dest/style.min.css">
+    <link rel="stylesheet" href="./dest/fonts.css">
+    <style>
+        .loading {
+            z-index: 9999;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black-cl);
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading .loading__bars {
+            width: 160px;
+            height: 4px;
+            position: relative;
+            background-color: var(--white-cl);
+            margin-bottom: 15px;
+        }
+
+        .loading .loading__bars div {
+            position: absolute;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--yellow-cl);
+        }
+
+        .loading .loading__percentage {
+            color: var(--white-cl);
+            font-size: var(--btn-text);
+            line-height: var(--btn-lh);
+            letter-spacing: var(--btn-ls);
+            position: relative;
+        }
+
+        .loading.completed {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading">
+        <div class="loading__bars">
+            <div></div>
+        </div>
+        <div class="loading__percentage">0%</div>
+    </div>
+
+    <div class="back-btn">
+        <svg width="7" height="15" viewBox="0 0 7 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.49992 0.934721L3.49992 14.5M5.83325 3.25323L3.49992 0.5L1.16659 3.25323" stroke="white"
+                stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </div>
+
+    <ul class="header__nav-m">
+        <li>
+            <a href="#slider" class="active">HOME</a>
+        </li>
+        <li>
+            <a href="#products">PRODUCTS</a>
+        </li>
+        <li>
+            <a href="#about">ABOUT</a>
+        </li>
+        <li>
+            <a href="#gallery">GALLERY</a>
+        </li>
+        <li>
+            <a href="#news">NEWS</a>
+        </li>
+    </ul>
+
+    <div class="p-video">
+        <div class="p-video__inner">
+            <div class="p-video__inner--iframe">
+                <iframe width="100%" height="100%" src="" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+                <div class="p-video__inner--close">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="30" height="30" fill="#BEA67C" />
+                        <path
+                            d="M11.2668 9.86665C11.1474 9.86665 11.0279 9.91213 10.9369 10.0034L10.0035 10.9367C9.82108 11.1192 9.82108 11.4146 10.0035 11.5966L13.4069 15L10.0035 18.4034C9.82108 18.5858 9.82108 18.8813 10.0035 19.0633L10.9369 19.9966C11.1193 20.1791 11.4148 20.1791 11.5968 19.9966L15.0002 16.5932L18.4035 19.9966C18.5855 20.1791 18.8814 20.1791 19.0634 19.9966L19.9968 19.0633C20.1792 18.8808 20.1792 18.5854 19.9968 18.4034L16.5934 15L19.9968 11.5966C20.1792 11.4146 20.1792 11.1187 19.9968 10.9367L19.0634 10.0034C18.881 9.8209 18.5855 9.8209 18.4035 10.0034L15.0002 13.4068L11.5968 10.0034C11.5055 9.91213 11.3862 9.86665 11.2668 9.86665Z"
+                            fill="white" />
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="progress"></div>
+
+    <header class="header">
+        <div class="container-fluid">
+            <div class="header__logo">
+                <a href="./">
+                    <svg width="166" height="23" viewBox="0 0 166 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M23.7072 22.1398L29.9116 0.3592H24.6869L20.8989 16.0987L16.7844 0.3592H13.1598L9.01266 16.0987L5.19208 0.3592H0L6.23702 22.1398H11.1679L14.9558 7.18401L18.7764 22.1398H23.7072Z"
+                            fill="white" />
+                        <path
+                            d="M46.6777 22.5317C53.2739 22.5317 58.0741 17.8294 58.0741 11.2658C58.0741 4.70226 53.2739 0 46.6777 0C40.1141 0 35.3139 4.70226 35.3139 11.2658C35.3139 17.8294 40.1141 22.5317 46.6777 22.5317ZM46.6777 18.4172C42.6612 18.4172 40.0814 15.315 40.0814 11.2658C40.0814 7.18401 42.6612 4.11448 46.6777 4.11448C50.6942 4.11448 53.3065 7.18401 53.3065 11.2658C53.3065 15.315 50.6942 18.4172 46.6777 18.4172Z"
+                            fill="white" />
+                        <path
+                            d="M76.5451 22.5317C83.1413 22.5317 87.9415 17.8294 87.9415 11.2658C87.9415 4.70226 83.1413 0 76.5451 0C69.9815 0 65.1813 4.70226 65.1813 11.2658C65.1813 17.8294 69.9815 22.5317 76.5451 22.5317ZM76.5451 18.4172C72.5286 18.4172 69.9489 15.315 69.9489 11.2658C69.9489 7.18401 72.5286 4.11448 76.5451 4.11448C80.5616 4.11448 83.174 7.18401 83.174 11.2658C83.174 15.315 80.5616 18.4172 76.5451 18.4172Z"
+                            fill="white" />
+                        <path
+                            d="M104.682 22.1398C111.507 22.1398 116.242 17.8294 116.242 11.2658C116.242 4.70226 111.507 0.3592 104.682 0.3592H96.0937V22.1398H104.682ZM104.682 18.058H100.731V4.44102H104.682C109.156 4.44102 111.507 7.41259 111.507 11.2658C111.507 14.9558 108.992 18.058 104.682 18.058Z"
+                            fill="white" />
+                        <path
+                            d="M139.843 22.1398V18.058H129.067V13.1271H139.615V9.04532H129.067V4.44102H139.843V0.3592H124.43V22.1398H139.843Z"
+                            fill="white" />
+                        <path
+                            d="M166 22.1398L161.102 13.8455C163.453 13.2904 165.869 11.2332 165.869 7.37993C165.869 3.33077 163.094 0.3592 158.555 0.3592H148.367V22.1398H153.003V14.4007H156.4L160.677 22.1398H166ZM157.869 10.3188H153.003V4.44102H157.869C159.73 4.44102 161.134 5.55128 161.134 7.37993C161.134 9.20859 159.73 10.3188 157.869 10.3188Z"
+                            fill="white" />
+                        <path d="M35.6294 9.24976H87.6189V12.6871H35.6294V9.24976Z" fill="#BEA67C" />
+                    </svg>
+                    <h1 class="hidden">Wooder</h1>
+                </a>
+            </div>
+
+            <ul class="header__nav">
+                <li>
+                    <a href="#slider" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="#products">PRODUCTS</a>
+                </li>
+                <li>
+                    <a href="#about">ABOUT</a>
+                </li>
+                <li>
+                    <a href="#gallery">GALLERY</a>
+                </li>
+                <li>
+                    <a href="#news">NEWS</a>
+                </li>
+            </ul>
+
+            <div class="header__right">
+                <div class="lang">
+                    <div class="lang__current">
+                        <span>EN</span>
+                        <svg width="8" height="3" viewBox="0 0 8 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 3L7.4641 0H0.535898L4 3Z" fill="#BEA67C" />
+                        </svg>
+                    </div>
+
+                    <div class="lang__options">
+                        <div class="lang__options-item">VN</div>
+                        <div class="lang__options-item">AU</div>
+                        <div class="lang__options-item">JP</div>
+                    </div>
+                </div>
+
+                <div class="header__hambur">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="homepage">
+        <section class="slider section" id="slider">
+            <!-- Start -->
+            <div class="slider__wrapper">
+                <div class="slider__item active">
+                    <div class="textbox">
+                        <h2 class="heading lv1 yellow">WOODER</h2>
+                        <a href="#" class="btn btn-main">
+                            LEARN MORE
+                            <svg width="24" height="10" viewBox="0 0 24 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3169 5.1867L0.999999 5.1867M18.6735 9L23 5.1867L18.6735 1.37339"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:576px )" srcset="./img/img1-hero-mobile.jpg 2x">
+                        <img srcset="./img/img1-hero.jpg 1.5x" alt="wooder" class="slider__items-img">
+                    </picture>
+                </div>
+                <div class="slider__item">
+                    <div class="textbox">
+                        <h2 class="heading lv1 yellow">WOODER 2</h2>
+                        <a href="#" class="btn btn-main">
+                            LEARN MORE
+                            <svg width="24" height="10" viewBox="0 0 24 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3169 5.1867L0.999999 5.1867M18.6735 9L23 5.1867L18.6735 1.37339"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:576px )" srcset="./img/img2-hero-mobile.jpg 2x">
+                        <img srcset="./img/img2-hero.jpg 1.5x" alt="wooder" class="slider__items-img">
+                    </picture>
+                </div>
+                <div class="slider__item">
+                    <div class="textbox">
+                        <h2 class="heading lv1 yellow">WOODER 3</h2>
+                        <a href="#" class="btn btn-main">
+                            LEARN MORE
+                            <svg width="24" height="10" viewBox="0 0 24 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3169 5.1867L0.999999 5.1867M18.6735 9L23 5.1867L18.6735 1.37339"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:576px )" srcset="./img/img3-hero-mobile.jpg 2x">
+                        <img srcset="./img/img3-hero.jpg 1.5x" alt="wooder" class="slider__items-img">
+                    </picture>
+                </div>
+            </div>
+
+            <div class="slider__bottom">
+                <div class="container-fluid">
+                    <div class="slider__bottom-paging">
+                        <div class="number">01</div>
+                        <div class="amount">/03</div>
+                    </div>
+                    <div class="slider__bottom-mid">
+                        <div class="mouse">
+                            <svg width="16" height="24" viewBox="0 0 16 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8 4.5C8.19891 4.5 8.38968 4.57902 8.53033 4.71967C8.67098 4.86032 8.75 5.05109 8.75 5.25V8.25C8.75 8.44891 8.67098 8.63968 8.53033 8.78033C8.38968 8.92098 8.19891 9 8 9C7.80109 9 7.61032 8.92098 7.46967 8.78033C7.32902 8.63968 7.25 8.44891 7.25 8.25V5.25C7.25 5.05109 7.32902 4.86032 7.46967 4.71967C7.61032 4.57902 7.80109 4.5 8 4.5ZM14 16.5C14 18.0913 13.3679 19.6174 12.2426 20.7426C11.1174 21.8679 9.5913 22.5 8 22.5C6.4087 22.5 4.88258 21.8679 3.75736 20.7426C2.63214 19.6174 2 18.0913 2 16.5V7.5C2 5.9087 2.63214 4.38258 3.75736 3.25736C4.88258 2.13214 6.4087 1.5 8 1.5C9.5913 1.5 11.1174 2.13214 12.2426 3.25736C13.3679 4.38258 14 5.9087 14 7.5V16.5ZM8 0C6.01088 0 4.10322 0.790176 2.6967 2.1967C1.29018 3.60322 0.5 5.51088 0.5 7.5V16.5C0.5 18.4891 1.29018 20.3968 2.6967 21.8033C4.10322 23.2098 6.01088 24 8 24C9.98912 24 11.8968 23.2098 13.3033 21.8033C14.7098 20.3968 15.5 18.4891 15.5 16.5V7.5C15.5 5.51088 14.7098 3.60322 13.3033 2.1967C11.8968 0.790176 9.98912 0 8 0Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+
+                        <div class="arrow">
+                            <svg width="8" height="35" viewBox="0 0 8 35" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.89712 33.7354L3.89712 1M1 30.9674L3.89712 34.2544L6.79424 30.9674"
+                                    stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="slider__bottom-control">
+                        <div class="ctrl prev">
+                            <svg width="24" height="10" viewBox="0 0 24 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3169 5.1867L0.999999 5.1867M18.6735 9L23 5.1867L18.6735 1.37339"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+
+                        <div class="ctrl next">
+                            <svg width="24" height="10" viewBox="0 0 24 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.3169 5.1867L0.999999 5.1867M18.6735 9L23 5.1867L18.6735 1.37339"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="products section" id="products">
+            <!-- Start -->
+            <div class="container">
+                <div class="products__item">
+                    <div class="textbox bfr">
+                        <h2 class="heading lv2">FURNITURE</h2>
+                        <p class="des">
+                            Wooder utilizes materials otherwise left behind, rendered useless in their original intent.
+                            By creating new pieces made
+                            o.rerclaimed barnwood
+                        </p>
+                        <a href="#" class="link">
+                            <span>LEARN MORE</span>
+                            <svg width="21" height="8" viewBox="0 0 21 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19.4064 3.97153L0.653943 3.97153M16.2013 6.86865L20.0073 3.97153L16.2013 1.07441"
+                                    stroke="#BEA67C" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="products__img">
+                        <img src="./img/img1-products.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="products__item order">
+                    <div class="products__img">
+                        <img src="./img/img2-products.jpg" alt="">
+                    </div>
+                    <div class="textbox aft">
+                        <h2 class="heading lv2">DECOR</h2>
+                        <p class="des">
+                            We make all types of wooden decor as per design given by Architect,Interior designer,
+                            contractor which is suitable
+                            your premises.
+                        </p>
+                        <a href="#" class="link">
+                            <span>LEARN MORE</span>
+                            <svg width="21" height="8" viewBox="0 0 21 8" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19.4064 3.97153L0.653943 3.97153M16.2013 6.86865L20.0073 3.97153L16.2013 1.07441"
+                                    stroke="#BEA67C" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="videos">
+            <!-- Start -->
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading lv2">WOODER – IS QUALITY</h2>
+                    <p class="des">
+                        Wooder utilizes materials otherwise left behind, rendered useless in their original intent. By
+                        creating new pieces made
+                        rerclaimed barnwood rendered useless in their original intent.
+                    </p>
+                    <p class="des__hide">
+                        We create unique design objects made of rare wood, specially under the order. Look at the short
+                        video about our work.
+                    </p>
+                </div>
+
+                <div class="videos__wrapper">
+                    <div class="videos__item">
+                        <div class="videos__item-frame" data-video-src="lhG-o5gG17I">
+                            <div class="videos__thumbnail">
+                                <img src="./img/img1-video.jpg" alt="wooder">
+                            </div>
+                            <div class="videos__play">
+                                <svg width="52" height="53" viewBox="0 0 52 53" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.8" x="0.000244141" y="0.144531" width="52" height="52" rx="26"
+                                        fill="#BEA67C" />
+                                    <path
+                                        d="M36.208 25.3976L22.2735 17.3524C21.8475 17.1065 21.3235 17.1065 20.897 17.3524C20.4717 17.5981 20.2095 18.0527 20.2095 18.5443V34.6343C20.2095 35.126 20.4723 35.5803 20.897 35.8256C21.1104 35.9487 21.3477 36.0099 21.5852 36.0099C21.8225 36.0099 22.0602 35.9487 22.273 35.8256L36.2075 27.7806C36.6332 27.5351 36.8953 27.0807 36.8953 26.5893C36.8962 26.0979 36.6336 25.6436 36.208 25.3976Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Innovative Design</h3>
+                    </div>
+                    <div class="videos__item">
+                        <div class="videos__item-frame" data-video-src="w4zMxwRmtjA">
+                            <div class="videos__thumbnail">
+                                <img src="./img/img2-video.jpg" alt="wooder">
+                            </div>
+                            <div class="videos__play">
+                                <svg width="52" height="53" viewBox="0 0 52 53" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.8" x="0.000244141" y="0.144531" width="52" height="52" rx="26"
+                                        fill="#BEA67C" />
+                                    <path
+                                        d="M36.208 25.3976L22.2735 17.3524C21.8475 17.1065 21.3235 17.1065 20.897 17.3524C20.4717 17.5981 20.2095 18.0527 20.2095 18.5443V34.6343C20.2095 35.126 20.4723 35.5803 20.897 35.8256C21.1104 35.9487 21.3477 36.0099 21.5852 36.0099C21.8225 36.0099 22.0602 35.9487 22.273 35.8256L36.2075 27.7806C36.6332 27.5351 36.8953 27.0807 36.8953 26.5893C36.8962 26.0979 36.6336 25.6436 36.208 25.3976Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>High-level Skills</h3>
+                    </div>
+                    <div class="videos__item">
+                        <div class="videos__item-frame" data-video-src="VJ5WoHkrXdI">
+                            <div class="videos__thumbnail">
+                                <img src="./img/img3-video.jpg" alt="wooder">
+                            </div>
+                            <div class="videos__play">
+                                <svg width="52" height="53" viewBox="0 0 52 53" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.8" x="0.000244141" y="0.144531" width="52" height="52" rx="26"
+                                        fill="#BEA67C" />
+                                    <path
+                                        d="M36.208 25.3976L22.2735 17.3524C21.8475 17.1065 21.3235 17.1065 20.897 17.3524C20.4717 17.5981 20.2095 18.0527 20.2095 18.5443V34.6343C20.2095 35.126 20.4723 35.5803 20.897 35.8256C21.1104 35.9487 21.3477 36.0099 21.5852 36.0099C21.8225 36.0099 22.0602 35.9487 22.273 35.8256L36.2075 27.7806C36.6332 27.5351 36.8953 27.0807 36.8953 26.5893C36.8962 26.0979 36.6336 25.6436 36.208 25.3976Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3>Quality Products</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="banner"
+            style="background: url(img/img-banner.jpg) center/cover no-repeat; background-attachment: fixed;">
+            <!-- Start -->
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading lv2 yellow">WE DO THE DESIGN
+                        OF ANY COMPLEXITY</h2>
+                    <p class="des">
+                        Wooder utilizes materials otherwise left behind, rendered useless in their original intent. By
+                        creating new pieces made
+                        o.rerclaimed barnwood
+                    </p>
+                    <div class="banner__btn" data-video-src="v86bwAYDcHI">
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.0059 9.10593L8.4336 6.4661C8.29383 6.38542 8.12188 6.38542 7.98195 6.4661C7.84241 6.54672 7.75635 6.69589 7.75635 6.85719V12.1367C7.75635 12.2981 7.84258 12.4471 7.98195 12.5276C8.05197 12.568 8.12982 12.5881 8.20777 12.5881C8.28562 12.5881 8.36363 12.568 8.43343 12.5276L13.0057 9.88787C13.1454 9.80731 13.2314 9.6582 13.2314 9.49696C13.2317 9.33572 13.1455 9.18666 13.0059 9.10593Z"
+                                fill="white" />
+                            <circle cx="9.75" cy="9" r="8.5" stroke="white" />
+                        </svg>
+                        <span>WATCH VIDEO</span>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="about section" id="about">
+            <!-- Start -->
+            <div class="container">
+                <div class="about__thumbnail">
+                    <img src="./img/img-aboutUs.jpg" alt="wooder">
+                </div>
+                <div class="textbox bfr">
+                    <h2 class="heading lv2 bfr">ABOUT US</h2>
+                    <p class="des">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                    </p>
+                    <p class="des__hide">We are a team of professionals in
+                        the wood processing and the creation of
+                        wooden lorem.of the highest class.
+                    </p>
+                    <a href="#" class="link">
+                        <span>LEARN MORE</span>
+                        <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.4064 3.97153L0.653943 3.97153M16.2013 6.86865L20.0073 3.97153L16.2013 1.07441"
+                                stroke="#BEA67C" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="gallery section" id="gallery">
+            <!-- Start -->
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading lv2 white">GALLERY</h2>
+                    <p class="des">
+                        We are a team of professionals in the wood processing and
+                        the creation of wooden furniture of the highest class
+                    </p>
+                </div>
+
+                <div class="gallery__wrapper">
+                    <a href="img/img1-gallery-pop.jpg" data-fancybox="images" class="gallery__item">
+                        <img src="./img/img1-gallery.jpg" alt="wooder">
+                    </a>
+
+                    <a href="img/img3-gallery-pop.jpg" data-fancybox="images" class="gallery__item">
+                        <img src="./img/img4-gallery.jpg" alt="wooder">
+                    </a>
+
+                    <a href="img/img2-gallery-pop.jpg" data-fancybox="images" class="gallery__item">
+                        <img src="./img/img2-gallery.jpg" alt="wooder">
+                    </a>
+
+                    <a href="img/img5-gallery-pop.jpg" data-fancybox="images" class="gallery__item">
+                        <img src="./img/img3-gallery.jpg" alt="wooder">
+                    </a>
+
+                    <a href="img/img4-gallery-pop.jpg" data-fancybox="images" class="gallery__item">
+                        <img src="./img/img5-gallery.jpg" alt="wooder">
+                    </a>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="news section" id="news">
+            <!-- Start -->
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading lv2">NEWS</h2>
+                    <p class="des">
+                        We are a team of professionals in the wood processing and
+                        the creation of wooden furniture of the highest class
+                    </p>
+                    <div class="options">
+                        <!-- Must start with "data-" then set its NAME (tab in this case) if use this method -->
+                        <div class="options__item active" data-tab="1">ALL</div>
+                        <div class="options__item" data-tab="2">TECHNOLOGY</div>
+                        <div class="options__item" data-tab="3">FASHION</div>
+                    </div>
+                </div>
+
+                <div class="news__wrapper">
+                    <div class="news__list news__list-1 active">
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img1-news.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        WHERE DOES IT COME FROM?
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img2-news.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        THERE ARE MANY VARIATIONS OF<br> PASSAGES
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img3-news.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        IT IS A LONG ESTABLISHED FACT
+                                        THAT A READER IT HAS ROOTS IN A
+                                        PIECE OF...
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news__list news__list-2">
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img1-news2.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        WHERE DOES IT COME FROM?
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img2-news2.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        THERE ARE MANY VARIATIONS OF<br> PASSAGES
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img3-news2.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        2: IT IS A LONG ESTABLISHED FACT
+                                        THAT A READER IT HAS ROOTS IN A
+                                        PIECE OF...
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    2: Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news__list news__list-3">
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img1-news.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        WHERE DOES IT COME FROM?
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img2-news2.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        THERE ARE MANY VARIATIONS OF<br> PASSAGES
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="news__item">
+                            <div class="news__thumbnail">
+                                <a href="#">
+                                    <img src="./img/img3-news.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="textbox">
+                                <h3 class="heading lv3">
+                                    <a href="#">
+                                        IT IS A LONG ESTABLISHED FACT
+                                        THAT A READER IT HAS ROOTS IN A
+                                        PIECE OF...
+                                    </a>
+                                </h3>
+                                <p class="des small">
+                                    Contrary to popular belief, Lorem Ipsum
+                                    is not simply random text. It has roots
+                                    in a piece of classical Latin literatur Lorem Ipsum
+                                    is not simply random text.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+        </section>
+
+        <section class="carousel">
+            <div class="container">
+                <img src="./img/img1-carousel.jpg" alt="wooder">
+                <img src="./img/img2-carousel.jpg" alt="wooder">
+                <img src="./img/img3-carousel.jpg" alt="wooder">
+                <img src="./img/img4-carousel.jpg" alt="wooder">
+            </div>
+            <div class="progress__bot">
+                <div class="progress__bot-bars"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2023 WOODER, CFD Circle</p>
+            <a href="./" class="footer__logo">
+                <svg width="166" height="23" viewBox="0 0 166 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M23.7072 22.1398L29.9116 0.3592H24.6869L20.8989 16.0987L16.7844 0.3592H13.1598L9.01266 16.0987L5.19208 0.3592H0L6.23702 22.1398H11.1679L14.9558 7.18401L18.7764 22.1398H23.7072Z"
+                        fill="white" />
+                    <path
+                        d="M46.6777 22.5317C53.2739 22.5317 58.0741 17.8294 58.0741 11.2658C58.0741 4.70226 53.2739 0 46.6777 0C40.1141 0 35.3139 4.70226 35.3139 11.2658C35.3139 17.8294 40.1141 22.5317 46.6777 22.5317ZM46.6777 18.4172C42.6612 18.4172 40.0814 15.315 40.0814 11.2658C40.0814 7.18401 42.6612 4.11448 46.6777 4.11448C50.6942 4.11448 53.3065 7.18401 53.3065 11.2658C53.3065 15.315 50.6942 18.4172 46.6777 18.4172Z"
+                        fill="white" />
+                    <path
+                        d="M76.5451 22.5317C83.1413 22.5317 87.9415 17.8294 87.9415 11.2658C87.9415 4.70226 83.1413 0 76.5451 0C69.9815 0 65.1813 4.70226 65.1813 11.2658C65.1813 17.8294 69.9815 22.5317 76.5451 22.5317ZM76.5451 18.4172C72.5286 18.4172 69.9489 15.315 69.9489 11.2658C69.9489 7.18401 72.5286 4.11448 76.5451 4.11448C80.5616 4.11448 83.174 7.18401 83.174 11.2658C83.174 15.315 80.5616 18.4172 76.5451 18.4172Z"
+                        fill="white" />
+                    <path
+                        d="M104.682 22.1398C111.507 22.1398 116.242 17.8294 116.242 11.2658C116.242 4.70226 111.507 0.3592 104.682 0.3592H96.0937V22.1398H104.682ZM104.682 18.058H100.731V4.44102H104.682C109.156 4.44102 111.507 7.41259 111.507 11.2658C111.507 14.9558 108.992 18.058 104.682 18.058Z"
+                        fill="white" />
+                    <path
+                        d="M139.843 22.1398V18.058H129.067V13.1271H139.615V9.04532H129.067V4.44102H139.843V0.3592H124.43V22.1398H139.843Z"
+                        fill="white" />
+                    <path
+                        d="M166 22.1398L161.102 13.8455C163.453 13.2904 165.869 11.2332 165.869 7.37993C165.869 3.33077 163.094 0.3592 158.555 0.3592H148.367V22.1398H153.003V14.4007H156.4L160.677 22.1398H166ZM157.869 10.3188H153.003V4.44102H157.869C159.73 4.44102 161.134 5.55128 161.134 7.37993C161.134 9.20859 159.73 10.3188 157.869 10.3188Z"
+                        fill="white" />
+                    <path d="M35.6294 9.24976H87.6189V12.6871H35.6294V9.24976Z" fill="#BEA67C" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+    <script src="./dest/jsmain.min.js"></script>
+    <script src="./dest/main.js"></script>
+
+</body>
