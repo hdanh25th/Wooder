@@ -1,0 +1,84 @@
+:root {
+    --gap: 28px;
+    --max-width-page: 2560px;
+    --max-width-container-fluid: 1920px;
+    --max-width-container: calc(1196px + calc(var(--gap)*2));
+
+    --header-height: 90px;
+
+    --yellow-cl: #bea67c;
+    --white-cl: #ffffff;
+    --black-cl: #000000;
+    --grey-cl: #464646;
+
+    --fs: 8.4rem;
+    --fs-lv2: 4.6rem;
+    --fs-lv3: 1.8rem;
+    --btn-text: 1.5rem;
+    --body-text: 1.8rem;
+    --body-text-small: 1.4rem;
+
+    --lh: 10.2rem;
+    --lh-lv2: 5.6rem;
+    --lh-lv3: 2.4rem;
+    --lh-lv4: 2.2rem;
+    --btn-lh: 1.8rem;
+    --body-lh: 2.5rem;
+
+    --btn-ls: 0.1em;
+    --ls: 0.12em;
+    --ls-lv2: 0.1em;
+    --ls-lv3: 0.04em;
+    --body-ls: 0.02em;
+
+    --btn-height: 44px;
+    --btn-height-lv2: 34.46px;
+    --pad: 120px;
+
+    --time: 0.4s;
+    --cubic: cubic-bezier(0.59, 0.29, 0.15, 0.93);
+
+    // Responsive
+    @include md {
+        --container-max-width: 1140px;
+    }
+
+    @include sm {
+        --container-max-width: 960px; // or 100%, depend
+        --pad: 90px
+    }
+
+    @include xs {
+        --container-max-width: 720px; // or 100%, depend
+        --gap: 15px;
+        --header-height: 64px;
+        --btn-height: 34px;
+        --btn-height-lv2: 27px;
+        --pad: 60px;
+        --fs: 5.6rem;
+        --fs-lv2: 3.8rem;
+        --fs-lv3: 1.6rem;
+        --fs-lv4: 1.5rem;
+        --btn-text: 1.2rem;
+        --btn-lh: 1.5rem;
+        --body-text: 1.5rem;
+        --body-text-small: 1.2rem;
+
+        --lh: 6.8rem;
+        --lh-lv2: 4.2rem;
+        --lh-lv3: 2.2rem;
+        --lh-lv4: 2rem;
+        --body-lh: 2rem;
+
+        --body-ls: 0.04em;
+        --ls: 0.08em;
+        --ls-lv2: 0.04em;
+        --ls-lv3: 0.1em;
+        // Set for other devices too if required
+    }
+
+    @include xxs {
+        --container-max-width: 100%;
+        --pad: 60px;
+    }
+}

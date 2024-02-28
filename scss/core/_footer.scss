@@ -1,0 +1,51 @@
+footer {
+    background: var(--black-cl);
+    height: 100px;
+
+    .container {
+        height: 100%;
+        @include regular-flex;
+        justify-content: space-between;
+
+        a {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .copyright {
+            font-size: 1.4rem;
+            line-height: 17px;
+            letter-spacing: 0.04em;
+            color: var(--white-cl);
+            opacity: 0.5;
+        }
+
+        .back__btn {
+            width: 35px;
+            height: 35px;
+            background-color: var(--grey-cl);
+            border: 1px solid var(--white-cl);
+            @include regular-flex;
+            cursor: pointer;
+        }
+    }
+
+    @include xs {
+        height: 92px;
+
+        .container {
+            justify-content: flex-end;
+
+            .copyright {
+                position: absolute;
+                left: 50%;
+                top: 68%;
+                transform: translateX(-50%);
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+                letter-spacing: 0.04em;
+            }
+        }
+    }
+}
